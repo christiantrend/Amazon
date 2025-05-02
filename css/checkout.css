@@ -35,13 +35,13 @@ header {
     display: grid;
     grid-template-columns: 1fr .7fr;
     gap: 2rem;
+    padding-top: .5rem;
    
 }
 
 .cart-items {
     display: grid;
     gap: 1em;
-    padding-top: .5rem;
 }
 
 .order-item {
