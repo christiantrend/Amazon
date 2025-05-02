@@ -70,15 +70,14 @@ header .links {
 
 .item-grid-area {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     overflow-x: none;
-    gap: 0;
+    
 }
 
 .item-container {
     display: flex;
     flex-direction: column;
-    width: 15.6em;
     align-items: center;
     justify-content: center;
     border: 1px groove black;
@@ -90,6 +89,7 @@ header .links {
 
 .product-image {
     width: 80%;
+    height: 170px;
 }
 .ratings-image {
     width: 50%;
