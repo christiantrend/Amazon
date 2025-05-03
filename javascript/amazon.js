@@ -1,4 +1,5 @@
 import { products } from '../data/products.js';
+import { cart, findItem } from './cart.js';
 
 function generateHtml(){
     let gridElem = document.querySelector('.item-grid-area')
@@ -30,10 +31,10 @@ function generateHtml(){
                 </div>
                 <div class="price-and-buy">
                     <div class="adding-to-cart">
-                        <p class="added-animation"><img src="./images/icons/checkmark.png" alt="check mark"> Added</p>
+                        <p class="added-animation"><img src="./images/icons/checkmark.png" alt="check mark" class= 'js-added'> Added</p>
                         <p class="price-cents">${(product.priceCents/100).toFixed(2)}</p>
                     </div>
-                    <p><button class="add-to-cart-button">Add to Cart</button></p>
+                    <p><button class="add-to-cart-button" data-product-id = '${product.id}'>Add to Cart</button></p>
                 </div>
             </div>`
     })
@@ -41,4 +42,39 @@ function generateHtml(){
     gridElem.innerHTML = gridhtml;
 }
 
+function addingToCart(){
+    let buttonElem = document.querySelectorAll('.add-to-cart-button');
+    let quantity = document.querySelectorAll('#number-of-items')
+    
+    buttonElem.forEach((button,index)=>{
+        button.addEventListener('click', ()=>{
+            let id = button.dataset.productId
+            let product=findItem(id, products).element
+
+            let cartObject = {
+                id : product.id,
+                name : product.name,
+                quantity:quantity[index].value,
+                deliveryOption: 1
+            }
+            cart.addToCart(cartObject)
+            animatOnClick(index)
+        
+        })
+    })
+    
+}
+
+function animatOnClick(index){
+    let elem = document.querySelectorAll('.added-animation')
+    elem[index].style.opacity = '1'
+    let max = 1
+    setInterval(()=>{
+        elem[index].style.opacity = max
+        max -= 0.009
+        console.log(max)
+    }, 40)
+}
 generateHtml()
+addingToCart()
+
