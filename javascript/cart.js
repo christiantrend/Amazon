@@ -9,7 +9,16 @@ class Cart {
     }
 
     addToCart(object){
-        this.cartItems.push(object)
+        console.log()
+        let i = findItem(object.id, this.cartItems)
+        console.log(findItem(object.id, this.cartItems))
+        let item
+        if (i){
+            this.cartItems[i.index].quantity += Number(object.quantity)
+        }
+        else {
+            this.cartItems.push(object)
+        } 
         this.saveToStorage()
     }
 

@@ -39,7 +39,7 @@ header {
 
 .summary-container {
     display: grid;
-    grid-template-columns: 1fr .7fr;
+    grid-template-columns: 1fr .5fr;
     gap: 2rem;
     padding-top: .5rem;
    
@@ -63,7 +63,8 @@ header {
 
 .product-details{
     display: grid;
-    grid-template-columns: .5fr 1fr;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
 }
 
 .product-image{

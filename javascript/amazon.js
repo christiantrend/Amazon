@@ -54,11 +54,12 @@ function addingToCart(){
             let cartObject = {
                 id : product.id,
                 name : product.name,
-                quantity:quantity[index].value,
+                quantity:parseInt(quantity[index].value),
                 deliveryOption: 1
             }
             cart.addToCart(cartObject)
             animatOnClick(index)
+            console.log(cart)
         
         })
     })
@@ -69,10 +70,12 @@ function animatOnClick(index){
     let elem = document.querySelectorAll('.added-animation')
     elem[index].style.opacity = '1'
     let max = 1
-    setInterval(()=>{
+    const interval1 = setInterval(()=>{
         elem[index].style.opacity = max
         max -= 0.009
-        console.log(max)
+        if (max <= 0){
+            clearInterval(interval1)
+        }
     }, 40)
 }
 generateHtml()
